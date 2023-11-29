@@ -18,6 +18,8 @@ import addDays from "date-fns/addDays";
 import events from "./dummy_test_data.js";
 import { Link } from "react-router-dom";
 import AddTask from "./AddTask";
+import Quote from "./Quote";
+import Partner from "./Partner";
 import Choices from "./Choices";
 
 const locales = {
@@ -51,20 +53,33 @@ export default function Main() {
         <h1>TaskShare Calendar</h1>
         <Choices />
         <div className="routesContainer">
-
-        <Routes>
-          <Route path="/addtask" element={<AddTask handleAddEvent={handleAddEvent} addEvent={addEvent} setAddEvent = {setAddEvent}/>} />
-        </Routes>
-
-      </div>
-        {/* Calendar component from react-big-calendar. */}
-        <Calendar
-          localizer={localizer}
-          events={allEvents}
-          startAccessor="start"
-          endAccessor="end"
-          style={{ height: 800, width: 1000, margin: "50px" }}
-        />
+          <Routes>
+            <Route
+              path="/addtask"
+              element={
+                <AddTask
+                  handleAddEvent={handleAddEvent}
+                  addEvent={addEvent}
+                  setAddEvent={setAddEvent}
+                />
+              }
+            />
+            <Route path="/quotegenerator" element={<Quote />} />
+            <Route path="/addpartner" element={<Partner />} />
+          </Routes>
+        </div>
+        <div className="calendarbackground">
+          <div className="bk">
+            {/* Calendar component from react-big-calendar. */}
+            <Calendar
+              localizer={localizer}
+              events={allEvents}
+              startAccessor="start"
+              endAccessor="end"
+              style={{ height: 800, width: 1000, margin: "1rem" }}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

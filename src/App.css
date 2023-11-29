@@ -13,11 +13,132 @@
   font-size: 3rem;
 }
 
-.rbc-calendar {
-  margin: 0;
+.rbc-toolbar {
+  padding: 1rem;
+}
+
+.rbc-month-view {
+  padding: 1rem;
+  min-height: 50rem !important;
+}
+
+.rbc-month-row {
+  min-height: 8rem !important;
+}
+.rbc.row.bg {
+  min-height: 50rem !important;
+}
+
+.calendarbackground {
+  background-color: rgb(193, 246, 246);
+  border-radius: 10px;
+  padding: 0.25rem;
+  margin: 1rem;
+}
+
+.rbc-day-bg {
+  border-radius: 10px;
+  border-color: lightgray;
+  border-style: solid;
+
+  border-width: 2px;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  
+}
+
+.rbc-button-link {
+  padding: 0.5rem;
+}
+
+.rbc-today {
+  border-radius: 10px;
+  border-color: lightgray;
+  border-style: solid;
+
+  border-width: 2px;
+  padding: 0.2rem;
+  margin: 0.2rem;
+}
+
+.rbc-off-range-bg {
+  border-radius: 10px;
+  padding: 0.2rem;
+  margin: 0.2rem;
+}
+
+.rbc-header {
+  border-radius: 10px;
+}
+
+.calendar {
+  height: 900px;
+}
+
+.bk {
+  height: 900px;
 }
 
 .AIF-container {
-  border-width: 10px;
+  border-width: 3px;
   border-color: black;
+  border-style: solid;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(247, 226, 242);
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+button {
+  padding: 0;
+}
+
+.calendarspreadsheet {
+  border-width: 3px;
+  border-color: rgb(212, 25, 25);
+  border-style: solid;
+  padding-top: 0;
+}
+
+.task {
+  text-align: center;
+  padding: 0.2rem;
+}
+
+.startdate {
+  text-align: center;
+  padding: 0.2rem;
+}
+
+.enddate {
+  text-align: center;
+  padding: 0.2rem;
+}
+
+/* main */
+
+.addtask {
+  background-color: pink;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.getquote {
+  background-color: lightblue;
+}
+
+.addpartner {
+  background-color: rgb(204, 245, 123);
+}
+
+.rbc-calendar {
+  margin: 0;
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  min-height: 50rem !important;
 }
