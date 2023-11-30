@@ -43,9 +43,29 @@ h1 {
 .rbc-month-view {
   padding: 1rem !important;
   min-width: 90rem;
-  min-height: 55rem;
+  min-height: 64rem;
   border-radius: 10px;
   background-color: pink;
+}
+
+.rbc-month-view {
+  padding: 1rem !important;
+  min-width: 90rem;
+  min-height: 64rem;
+  border-radius: 10px;
+  background-color: pink;
+}
+
+.rbc-time-view{
+  padding: 1rem !important;
+  min-width: 90rem;
+  min-height: 64rem;
+  border-radius: 10px;
+  background-color: pink;
+}
+
+.rbc-events-container {
+background-color: whitesmoke;
 }
 
 /* .border {
@@ -141,6 +161,22 @@ a:hover {
   padding: 1rem;
   margin: 0.5rem;
   width: 40rem;
+  padding-left: 1.8rem;
+}
+
+/* event block */
+.rbc-event-content {
+  color: rgb(245, 245, 246);
+  background-color: rgb(242, 154, 154);
+  font-weight: bold;
+}
+/* border of block */
+.rbc-event.rbc-selected {
+  background-color: rgb(186, 135, 236);
+}
+
+.rbc-off-range-bg {
+  background-color: lightgray;
 }
 
 .routesContainer {

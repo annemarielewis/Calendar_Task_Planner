@@ -1,19 +1,19 @@
 const events = [
     {
-        description: "Big Meeting",
+        title: "Big Meeting",
         allDay: true,
-        startTime: new Date(2023, 11, 0),
-        endTime: new Date(2023, 11, 0),
+        start: new Date(2023, 11, 0),
+        end: new Date(2023, 11, 0),
     },
     {
-        description: "Vacation",
-        startTime: new Date(2023, 11, 7),
-        endTime: new Date(2023, 11, 10),
+        title: "Vacation",
+        start: new Date(2023, 11, 7),
+        end: new Date(2023, 11, 10),
     },
     {
-        description: "Conference",
-        startTime: new Date(2023, 11, 20),
-        endTime: new Date(2023, 11, 23),
+        title: "Conference",
+        start: new Date(2023, 11, 20),
+        end: new Date(2023, 11, 23),
     },
 ];
 

@@ -6,7 +6,7 @@ import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
@@ -35,29 +35,30 @@ const localizer = dateFnsLocalizer({
 });
 
 export default function Main() {
-  const [addEvent, setAddEvent] = useState({
-    description: "",
-    startTime: "",
-    endTime: "",
-  });
+  const initialState = { title: "", start: "", end: "" };
 
+  const [addEvent, setAddEvent] = useState(initialState);
   const [allEvents, setAllEvents] = useState(events);
+
+  const [formState, setFormState] = useState(initialState);
 
   function handleAddEvent(event) {
     event.preventDefault();
     setAllEvents([...allEvents, addEvent]);
+    setAddEvent(initialState)
   }
+
   return (
     <>
-    <div className="header">
+      <div className="header">
         <h1>ShareCare</h1>
         <div className="signups">
-        <a href= "">Login </a>
-        <a href= "">Logout </a>
-        <a href= "">Sign Up </a>
+          <a href="">Login </a>
+          <a href="">Logout </a>
+          <a href="">Sign Up </a>
         </div>
-    </div>
-        <div className="page">
+      </div>
+      <div className="page">
         <Choices />
         <div className="routesContainer">
           <Routes>

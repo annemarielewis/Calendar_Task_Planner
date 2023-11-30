@@ -1,11 +1,14 @@
 import DatePicker from "react-datepicker";
 import { Link } from "react-router-dom";
+// import Time from "./Time"
 export default function AddTask(props) {
-  const { addEvent, setAddEvent, handleAddEvent } = props;
+  const { addEvent, setAddEvent, handleAddEvent} = props;
+  // const Time = ({ date, value, onChange })
 
   return (
     <>
       {/* title input */}
+      <form onSubmit={handleAddEvent}>
       <div className="AIF-container">
         <div className="task">
           <input
@@ -27,25 +30,29 @@ export default function AddTask(props) {
             style={{ marginRight: "5rem" }}
             selected={addEvent.start}
             onChange={(start) => setAddEvent({ ...addEvent, start: start })}
+
           />
+
         </div>
+
         <div className="enddate">
           <DatePicker
             className="enddate"
             placeholderText="End Date"
             selected={addEvent.end}
             onChange={(end) => setAddEvent({ ...addEvent, end: end })}
+
           />
+         
         </div>
         <div className="btn">
-          <button className="rbc-btn-group" onClick={handleAddEvent}>
-            Submit
-          </button>
+          <button type="submit" className="rbc-btn-group">Submit</button>
         </div>
         <Link to="/">
           <button className="rbc-btn-group">x</button>
         </Link>
       </div>
+      </form>
     </>
   );
 }
