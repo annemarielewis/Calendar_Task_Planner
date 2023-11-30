@@ -1,5 +1,5 @@
 import DatePicker from "react-datepicker";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 export default function AddTask(props) {
   const { addEvent, setAddEvent, handleAddEvent } = props;
 
@@ -22,7 +22,7 @@ export default function AddTask(props) {
         {/* date inputs */}
         <div className="startdate">
           <DatePicker
-          className="startdate"
+            className="startdate"
             placeholderText="Start Date"
             style={{ marginRight: "5rem" }}
             selected={addEvent.start}
@@ -31,18 +31,20 @@ export default function AddTask(props) {
         </div>
         <div className="enddate">
           <DatePicker
-          className="enddate"
+            className="enddate"
             placeholderText="End Date"
             selected={addEvent.end}
             onChange={(end) => setAddEvent({ ...addEvent, end: end })}
           />
         </div>
         <div className="btn">
-          <button onClick={handleAddEvent}>
+          <button className="rbc-btn-group" onClick={handleAddEvent}>
             Submit
           </button>
         </div>
-        <Link to = "/"><button>x</button></Link>
+        <Link to="/">
+          <button className="rbc-btn-group">x</button>
+        </Link>
       </div>
     </>
   );

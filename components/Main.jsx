@@ -49,8 +49,15 @@ export default function Main() {
   }
   return (
     <>
-      <div className="calendar">
-        <h1>TaskShare Calendar</h1>
+    <div className="header">
+        <h1>ShareCare</h1>
+        <div className="signups">
+        <a href= "">Login </a>
+        <a href= "">Logout </a>
+        <a href= "">Sign Up </a>
+        </div>
+    </div>
+        <div className="page">
         <Choices />
         <div className="routesContainer">
           <Routes>
@@ -68,17 +75,15 @@ export default function Main() {
             <Route path="/addpartner" element={<Partner />} />
           </Routes>
         </div>
-        <div className="calendarbackground">
-          <div className="bk">
-            {/* Calendar component from react-big-calendar. */}
-            <Calendar
-              localizer={localizer}
-              events={allEvents}
-              startAccessor="start"
-              endAccessor="end"
-              style={{ height: 800, width: 1000, margin: "1rem" }}
-            />
-          </div>
+        <div className="border">
+          {/* Calendar component from react-big-calendar. */}
+          <Calendar
+            localizer={localizer}
+            events={allEvents}
+            startAccessor="start"
+            endAccessor="end"
+            style={{ height: 800, width: 1000, margin: "1rem" }}
+          />
         </div>
       </div>
     </>

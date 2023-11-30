@@ -1,29 +1,65 @@
 #root {
-  max-width: 1280px;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+
+body {
+background-color: whitesmoke !important;
 }
 
 .App {
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  align-content: center;
+  min-width: 90rem;
+}
+
+h1 {
+  color: grey;
+}
 .rbc-toolbar-label {
   font-size: 3rem;
+  color: grey;
+  margin-left: 6rem;
+
 }
 
 .rbc-toolbar {
   padding: 1rem;
+  min-width: 90rem;
+  background-color: whitesmoke;
 }
 
 .rbc-month-view {
-  padding: 1rem;
-  min-height: 50rem !important;
+  padding: 1rem !important;
+  min-width: 90rem;
+  min-height: 55rem;
+  border-radius: 10px;
+  background-color: pink;
 }
 
+/* .border {
+  border-width: 2rem;
+  border-style: solid;
+  border-color: rgb(243, 250, 112);
+  border-radius: 10px;
+  width: 90rem;
+  height: 63rem;
+} */
+
 .rbc-month-row {
-  min-height: 8rem !important;
+    min-height: 10rem !important;
+    max-height: 10rem !important;
 }
 .rbc.row.bg {
   min-height: 50rem !important;
@@ -34,21 +70,26 @@
   border-radius: 10px;
   padding: 0.25rem;
   margin: 1rem;
+  min-width: 80rem !important;
+  min-height: 72.3rem !important;
+  z-index: -10 !important;
+  position: absolute;
+
 }
 
 .rbc-day-bg {
   border-radius: 10px;
   border-color: lightgray;
   border-style: solid;
-
   border-width: 2px;
   padding: 0.2rem;
   margin: 0.2rem;
-  
+  background-color: whitesmoke;
 }
 
 .rbc-button-link {
   padding: 0.5rem;
+  color: grey !important;
 }
 
 .rbc-today {
@@ -69,40 +110,71 @@
 
 .rbc-header {
   border-radius: 10px;
+  background-color: whitesmoke;
+  color: grey;
+  margin: 3px !important;
 }
 
-.calendar {
-  height: 900px;
+a {
+color: grey !important;
+font-size: 20px;
+font-weight: bold !important;
+padding: .5rem;
 }
 
-.bk {
-  height: 900px;
-}
+a:hover {
+  color: rgb(0, 142, 237) !important;
+  }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content:space-between
+}
 .AIF-container {
-  border-width: 3px;
-  border-color: black;
-  border-style: solid;
+
   border-radius: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: rgb(247, 226, 242);
   padding: 1rem;
   margin: 0.5rem;
+  width: 40rem;
+}
+
+.routesContainer {
+  display: flex;
+  justify-content: center;
 }
 
 button {
-  padding: 0;
+  padding: 0px;
+  margin: 3px;
+  color: white !important;
+  font-weight: bold !important;
 }
 
-.calendarspreadsheet {
+.rbc-active {
+background-color: rgb(194, 111, 222) !important;
+}
+
+.rbc-btn-group {
+  background-color: rgb(113, 172, 224);
+  border-radius: 10px;
+}
+
+h1 {
+  display: flex;
+  align-content: flex-start !important;
+  font-style: italic;
+}
+/* .calendarspreadsheet {
   border-width: 3px;
   border-color: rgb(212, 25, 25);
   border-style: solid;
   padding-top: 0;
-}
+} */
 
 .task {
   text-align: center;
@@ -122,23 +194,26 @@ button {
 /* main */
 
 .addtask {
-  background-color: pink;
+  background-color: rgb(248, 157, 172);
   margin-right: 0.5rem;
   margin-left: 0.5rem;
+  font-weight: bold;
 }
 
 .getquote {
-  background-color: lightblue;
+  background-color: rgb(133, 210, 235);
+  font-weight: bold;
 }
 
 .addpartner {
-  background-color: rgb(204, 245, 123);
+  background-color: rgb(148, 203, 39);
+  font-weight: bold;
 }
 
 .rbc-calendar {
   margin: 0;
-  background-color: white;
+  background-color: whitesmoke;
   border-radius: 10px;
-  width: 100%;
-  min-height: 50rem !important;
+  min-width: 90rem !important;
 }
+

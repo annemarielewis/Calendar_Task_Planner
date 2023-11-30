@@ -1,4 +1,9 @@
 // point of App.jsx is to import the parent components
+
+//import of react big calendar css
+import 'react-big-calendar/lib/sass/styles.scss';
+import "./css.scss"
+
 import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
