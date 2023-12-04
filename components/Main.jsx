@@ -21,6 +21,9 @@ import AddTask from "./AddTask";
 import Quote from "./Quote";
 import Partner from "./Partner";
 import Choices from "./Choices";
+import {setHours, setMinutes} from "date-fns";
+import CustomEvent from "./CustomEvent"
+import axios from 'axios';
 
 const locales = {
   "en-US": enUSLocale,
@@ -36,17 +39,39 @@ const localizer = dateFnsLocalizer({
 
 export default function Main() {
   const initialState = { title: "", start: "", end: "" };
-
   const [addEvent, setAddEvent] = useState(initialState);
   const [allEvents, setAllEvents] = useState(events);
+  
 
-  const [formState, setFormState] = useState(initialState);
+  //add task to database
+  const [formData, setFormData] = useState({
+    title: '',
+    start: '',
+    end: '',
+  });
+
+  const handleForm = (e) => {
+    setFormData({...formData,[e.target.name]: e.target.value,
+    });
+  };
+
+  //^add task to database^
 
   function handleAddEvent(event) {
     event.preventDefault();
     setAllEvents([...allEvents, addEvent]);
     setAddEvent(initialState)
+    try {
+      const response = await axios.post('/api/create', formData);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
+
+  const [startDate, setStartDate] = useState(
+    setHours(setMinutes(new Date(), 30), 16),
+  );
 
   return (
     <>
@@ -69,6 +94,8 @@ export default function Main() {
                   handleAddEvent={handleAddEvent}
                   addEvent={addEvent}
                   setAddEvent={setAddEvent}
+                  startDate={startDate}
+                  setStartDate={setStartDate}
                 />
               }
             />
@@ -83,7 +110,10 @@ export default function Main() {
             events={allEvents}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: 800, width: 1000, margin: "1rem" }}
+            components={{
+              event: CustomEvent
+            }}
+            style={{ height: 1200, width: 1000, margin: "1rem" }}
           />
         </div>
       </div>
