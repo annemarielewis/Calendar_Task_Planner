@@ -4,8 +4,7 @@ import { setHours, setMinutes } from "date-fns";
 // import Time from "./Time"
 
 export default function AddTask(props) {
-  const { addEvent, setAddEvent, handleAddEvent } = props;
-  // const Time = ({ date, value, onChange })
+  const { addEvent, setAddEvent, handleAddEvent, formData, setFormData } = props;
   console.log(addEvent);
 
   return (
@@ -20,9 +19,10 @@ export default function AddTask(props) {
               placeholder="Task"
               style={{ width: "20%, marginRight: 10px" }}
               value={addEvent.title}
-              onChange={(e) =>
-                setAddEvent({ ...addEvent, title: e.target.value })
-              }
+              onChange={(e) => {
+                setAddEvent({ ...addEvent, title: e.target.value });
+                setFormData({ ...formData, [e.target.name]: e.target.value });
+              }}
             />
           </div>
           {/* date inputs */}
@@ -32,7 +32,13 @@ export default function AddTask(props) {
               placeholderText="Start Date"
               style={{ marginRight: "5rem" }}
               selected={addEvent.start}
-              onChange={(start) => setAddEvent({ ...addEvent, start: start })}
+              onChange={(start) => {
+                setAddEvent({ ...addEvent, start: start });
+                setFormData({
+                  ...formData,
+                  [start.target.name]: start.target.value,
+                });
+              }}
               showTimeSelect
               dateFormat="MMMM d, yyyy h:mm aa"
             />
@@ -43,7 +49,13 @@ export default function AddTask(props) {
               className="enddate"
               placeholderText="End Date"
               selected={addEvent.end}
-              onChange={(end) => setAddEvent({ ...addEvent, end: end })}
+              onChange={(end) => {
+                setAddEvent({ ...addEvent, end: end.target.value });
+                setFormData({
+                  ...formData,
+                  [end.target.name]: end.target.value,
+                });
+              }}
               showTimeSelect
               dateFormat="MMMM d, yyyy h:mm aa"
             />

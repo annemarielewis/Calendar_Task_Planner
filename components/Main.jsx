@@ -16,14 +16,14 @@ import enUSLocale from "date-fns/locale/en-US";
 import addDays from "date-fns/addDays";
 //component imports:
 import events from "./dummy_test_data.js";
-import { Link } from "react-router-dom";
 import AddTask from "./AddTask";
 import Quote from "./Quote";
 import Partner from "./Partner";
 import Choices from "./Choices";
-import {setHours, setMinutes} from "date-fns";
-import CustomEvent from "./CustomEvent"
-import axios from 'axios';
+import { setHours, setMinutes } from "date-fns";
+import CustomEvent from "./CustomEvent";
+import axios from "axios";
+import { useEffect } from 'react';
 
 const locales = {
   "en-US": enUSLocale,
@@ -41,36 +41,34 @@ export default function Main() {
   const initialState = { title: "", start: "", end: "" };
   const [addEvent, setAddEvent] = useState(initialState);
   const [allEvents, setAllEvents] = useState(events);
-  
 
   //add task to database
   const [formData, setFormData] = useState({
-    title: '',
-    start: '',
-    end: '',
+    title: "",
+    start: "",
+    end: "",
   });
 
   const handleForm = (e) => {
-    setFormData({...formData,[e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   //^add task to database^
 
-  function handleAddEvent(event) {
+ function handleAddEvent(event) {
     event.preventDefault();
     setAllEvents([...allEvents, addEvent]);
-    setAddEvent(initialState)
-    try {
-      const response = await axios.post('/api/create', formData);
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
+    setAddEvent(initialState);
+    // useEffect(() => {
+      try {
+        const response = await axios.post("/api/create", formData);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      // }})
+  }}
 
   const [startDate, setStartDate] = useState(
-    setHours(setMinutes(new Date(), 30), 16),
+    setHours(setMinutes(new Date(), 30), 16)
   );
 
   return (
@@ -96,6 +94,8 @@ export default function Main() {
                   setAddEvent={setAddEvent}
                   startDate={startDate}
                   setStartDate={setStartDate}
+                  formData={formData}
+                  setFormData={setFormData}
                 />
               }
             />
@@ -111,7 +111,7 @@ export default function Main() {
             startAccessor="start"
             endAccessor="end"
             components={{
-              event: CustomEvent
+              event: CustomEvent,
             }}
             style={{ height: 1200, width: 1000, margin: "1rem" }}
           />
