@@ -1,14 +1,20 @@
+import axios from 'axios';
+
 export default function CustomEvent({ event }) {
-  const handleDelete = () => {
-    // delete logic/database right here
-    console.log("Delete Event:", event);
-  };
+  console.log(event.title)
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(`http://localhost:3001/deletetask/${eventid}`);
+      // Handle any further actions after successful deletion
+    } catch (error) {
+      console.error("Error:", error);
+    }}
 
   return (
     <div>
       <span>{event.title}</span>
-      <button onClick={handleDelete} style={{ marginLeft: "5px", color: "black"}}>
-        X
+      <button id="delete-task" onClick={handleDelete} style={{ marginLeft: "5px", color: "black"}}>
+      ✓
       </button>
     </div>
   );

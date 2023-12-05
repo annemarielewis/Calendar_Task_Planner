@@ -23,6 +23,11 @@ body {
   background-color: rgb(224, 129, 113);
 }
 
+#delete-task {
+  background-color: rgb(135, 186, 90);
+  padding: 0;
+}
+
 .submit-event {
   padding: 0.2rem !important;
   font-size: 14px;
