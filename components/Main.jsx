@@ -18,7 +18,7 @@ import addDays from "date-fns/addDays";
 import events from "./dummy_test_data.js";
 import AddTask from "./AddTask";
 import Quote from "./Quote";
-import Partner from "./Partner";
+// import Partner from "./Partner";
 import Choices from "./Choices";
 import { setHours, setMinutes } from "date-fns";
 import CustomEvent from "./CustomEvent";
@@ -50,14 +50,21 @@ export default function Main() {
 
   // useEffect setup: calling what's in the db only on pageload-->prevents endless axios calls crashing the system!
   // (why we need usestate to display a user's added info right after they add it --> so teh info can display before the page reloads!)
+
   useEffect(() => {
-    // Function to be executed inside useEffect:
     async function fetchData() {
       try {
         const response = await axios.get("http://localhost:3001/tasks");
         console.log(response);
         // Update data state with the fetched data
-        setAllEvents(...allEvents, response.data);
+        let eventData = response.data;
+        console.log("eventdata:", eventData);
+        eventData.forEach((event) => {
+          event.start = new Date(event.start);
+          event.end = new Date(event.end);
+        });
+        console.log(eventData);
+        setAllEvents(...allEvents, eventData);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -117,7 +124,7 @@ export default function Main() {
               }
             />
             <Route path="/quotegenerator" element={<Quote />} />
-            <Route path="/addpartner" element={<Partner />} />
+            {/* <Route path="/addpartner" element={<Partner />} /> */}
           </Routes>
         </div>
         <div className="border">

@@ -4,7 +4,8 @@ export default function CustomEvent({ event }) {
   console.log(event.title)
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://localhost:3001/deletetask/${eventid}`);
+      console.log("click")
+      // const response = await axios.delete(`http://localhost:3001/deletetask/${eventid}`);
       // Handle any further actions after successful deletion
     } catch (error) {
       console.error("Error:", error);
