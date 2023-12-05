@@ -23,7 +23,6 @@ import Choices from "./Choices";
 import { setHours, setMinutes } from "date-fns";
 import CustomEvent from "./CustomEvent";
 import axios from "axios";
-import { useEffect } from 'react';
 
 const locales = {
   "en-US": enUSLocale,
@@ -44,28 +43,42 @@ export default function Main() {
 
   //add task to database
   const [formData, setFormData] = useState({
-    title: "",
+    task: "",
     start: "",
     end: "",
   });
 
-  const handleForm = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  //^add task to database^
+  // useEffect setup: calling what's in the db only on pageload-->prevents endless axios calls crashing the system!
+  // (why we need usestate to display a user's added info right after they add it --> so teh info can display before the page reloads!)
+  useEffect(() => {
+    // Function to be executed inside useEffect:
+    async function fetchData() {
+      try {
+        const response = await axios.get("/newtask");
+        // Update data state with the fetched data
+        setFormData(response.data);
+      } catch (error) {
+        setError(error);
+      }
+    }
+    // Call the fetchData function when the component mounts
+    fetchData();
+  }, []); // The empty dependency array means this effect runs once when the component mounts
 
- function handleAddEvent(event) {
+  async function handleAddEvent(event) {
     event.preventDefault();
+    // state logic:
     setAllEvents([...allEvents, addEvent]);
     setAddEvent(initialState);
-    // useEffect(() => {
-      try {
-        const response = await axios.post("/api/create", formData);
-        console.log(response.data);
-      } catch (error) {
-        console.error("Error:", error);
-      // }})
-  }}
+    console.log(formData);
+    //db logic
+    try {
+      const response = await axios.post("/newtask", formData);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
 
   const [startDate, setStartDate] = useState(
     setHours(setMinutes(new Date(), 30), 16)

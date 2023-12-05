@@ -28,11 +28,13 @@ app.use(express.urlencoded({ extended: true }));
 //CRUD: CREATE
 app.post("/newtask", async function createTask(req, res) {
   try {
+    // formdata from Main= what's in the body here
     const taskData = await new Task(req.body);
     await taskData.save();
     console.log(taskData);
     return res.status(201).json({ taskData });
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 });
