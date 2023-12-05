@@ -24,7 +24,7 @@ export default function AddTask(props) {
 
   return (
     <>
-      <form onSubmit={handleAddEvent}>
+      <form autoComplete="off" onSubmit={handleAddEvent}>
         <div className="AIF-container">
           {/* Task input */}
           <div className="title">
@@ -33,7 +33,7 @@ export default function AddTask(props) {
               id="title"
               type="text"
               placeholder="Title"
-              style={{ width: "20%", marginRight: "10px" }}
+              style={{ width: "92%", height: "1.2rem", marginRight: "10px" }}
               value={addEvent.title}
               onChange={(e) => {
                 setAddEvent({ ...addEvent, title: e.target.value });
@@ -47,6 +47,7 @@ export default function AddTask(props) {
               className="startdate"
               id="start"
               placeholderText="Start Date"
+              style={{ marginRight: "5rem" }}
               selected={addEvent.start}
               onChange={handleStartDateChange}
               showTimeSelect
@@ -67,13 +68,13 @@ export default function AddTask(props) {
           </div>
           {/* Submit button */}
           <div className="btn">
-            <button type="submit" className="rbc-btn-group">
+            <button type="submit" className="submit-event">
               Submit
             </button>
           </div>
           {/* Cancel link */}
           <Link to="/">
-            <button className="rbc-btn-group">x</button>
+            <button className="exit-btn">X</button>
           </Link>
         </div>
       </form>
