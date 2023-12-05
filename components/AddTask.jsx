@@ -27,12 +27,12 @@ export default function AddTask(props) {
       <form onSubmit={handleAddEvent}>
         <div className="AIF-container">
           {/* Task input */}
-          <div className="task">
+          <div className="title">
             <input
-              className="task"
-              id="task"
+              className="title"
+              id="title"
               type="text"
-              placeholder="Task"
+              placeholder="Title"
               style={{ width: "20%", marginRight: "10px" }}
               value={addEvent.title}
               onChange={(e) => {

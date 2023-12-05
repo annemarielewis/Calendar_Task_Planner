@@ -39,11 +39,11 @@ const localizer = dateFnsLocalizer({
 export default function Main() {
   const initialState = { title: "", start: "", end: "" };
   const [addEvent, setAddEvent] = useState(initialState);
-  const [allEvents, setAllEvents] = useState(events);
+  const [allEvents, setAllEvents] = useState([]);
 
   //add task to database
   const [formData, setFormData] = useState({
-    task: "",
+    title: "",
     start: "",
     end: "",
   });
@@ -54,11 +54,12 @@ export default function Main() {
     // Function to be executed inside useEffect:
     async function fetchData() {
       try {
-        const response = await axios.get("/newtask");
+        const response = await axios.get("http://localhost:3001/tasks");
+        console.log(response);
         // Update data state with the fetched data
-        setFormData(response.data);
+        setAllEvents(...allEvents, response.data);
       } catch (error) {
-        setError(error);
+        console.error("Error:", error);
       }
     }
     // Call the fetchData function when the component mounts
@@ -73,7 +74,10 @@ export default function Main() {
     console.log(formData);
     //db logic
     try {
-      const response = await axios.post("/newtask", formData);
+      const response = await axios.post(
+        "http://localhost:3001/newtask",
+        formData
+      );
       console.log(response.data);
     } catch (error) {
       console.error("Error:", error);
