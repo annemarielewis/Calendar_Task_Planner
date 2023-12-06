@@ -64,7 +64,7 @@ export default function Main() {
           event.end = new Date(event.end);
         });
         console.log(eventData);
-        setAllEvents(...allEvents, eventData);
+        setAllEvents(eventData);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -76,21 +76,24 @@ export default function Main() {
   async function handleAddEvent(event) {
     event.preventDefault();
     // state logic:
-    setAllEvents([...allEvents, addEvent]);
+
     setAddEvent(initialState);
-    console.log(formData);
+    // console.log(formData);
     //db logic
     try {
       const response = await axios.post(
         "http://localhost:3001/newtask",
         formData
       );
-      console.log(response.data);
+      setAllEvents([...allEvents, response.data.taskData]);
+      console.log("data", response.data.taskData);
+      // console.log(response.data);
+      
     } catch (error) {
       console.error("Error:", error);
     }
   }
-
+  console.log(allEvents);
   const [startDate, setStartDate] = useState(
     setHours(setMinutes(new Date(), 30), 16)
   );
@@ -135,7 +138,10 @@ export default function Main() {
             startAccessor="start"
             endAccessor="end"
             components={{
-              event: CustomEvent,
+              // event: CustomEvent,
+              event: (props) => (
+                <CustomEvent {...props} setAllEvents={setAllEvents} />
+              ),
             }}
             style={{ height: 1200, width: 1000, margin: "1rem" }}
           />

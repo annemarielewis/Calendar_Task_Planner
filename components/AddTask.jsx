@@ -9,7 +9,7 @@ export default function AddTask(props) {
 
   // Function to handle start date change
   const handleStartDateChange = (date) => {
-    console.log(date);
+    // console.log(date);
     setAddEvent({ ...addEvent, start: date });
     setFormData({ ...formData, start: date });
   };
@@ -20,7 +20,7 @@ export default function AddTask(props) {
     setFormData({ ...formData, end: date });
   };
 
-  console.log(formData);
+  // console.log(formData);
 
   return (
     <>

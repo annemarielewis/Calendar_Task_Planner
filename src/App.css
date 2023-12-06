@@ -195,20 +195,18 @@ a:hover {
 /* event block */
 .rbc-event-content {
   color: rgb(245, 245, 246);
-  background-color: rgb(201, 136, 229);
-  border-color: rgb(201, 136, 229);
+  background-color: rgb(187, 113, 218);
+  border-color: rgb(187, 113, 218);
   font-weight: bold;
 }
 /* border of block */
 .rbc-event.rbc-selected {
-  background-color: rgb(201, 136, 229);
+  background-color: rgb(187, 113, 218);
 }
 
 .rbc-event{
-  color: rgb(201, 136, 229);
-  background-color: rgb(201, 136, 229);
-  font-size: 13px;
-  height: .5rem;
+  color: rgb(187, 113, 218);
+  background-color: rgb(187, 113, 218);
 }
 
 .rbc-off-range-bg {
