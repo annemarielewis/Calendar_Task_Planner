@@ -9,7 +9,7 @@ import startOfWeek from "date-fns/startOfWeek";
 import React, { useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 import { Route, Routes } from "react-router-dom";
 import enUSLocale from "date-fns/locale/en-US";
@@ -22,6 +22,7 @@ import Quote from "./Quote";
 import Choices from "./Choices";
 import { setHours, setMinutes } from "date-fns";
 import CustomEvent from "./CustomEvent";
+import UpdateTask from "./UpdateTask"
 import axios from "axios";
 
 const locales = {
@@ -73,6 +74,8 @@ export default function Main() {
     fetchData();
   }, []); // The empty dependency array means this effect runs once when the component mounts
 
+
+  // CREATE:
   async function handleAddEvent(event) {
     event.preventDefault();
     // state logic:
@@ -114,6 +117,7 @@ export default function Main() {
         <Choices />
         <div className="routesContainer">
           <Routes>
+          <Route path="/updatetask/:id" element = {<UpdateTask />}/>
             <Route
               path="/addtask"
               element={
@@ -142,7 +146,6 @@ export default function Main() {
             components={{
               event: (props) => (
                 <CustomEvent {...props} setAllEvents={setAllEvents} />
-                // <UpdateTask {...props} setAllEvents={setAllEvents} />
               ),
             }}
             style={{ height: 1200, width: 1000, margin: "1rem" }}

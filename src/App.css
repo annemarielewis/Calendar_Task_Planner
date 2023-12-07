@@ -143,6 +143,7 @@ h1 {
 .rbc-button-link {
   padding: 0.5rem;
   color: grey !important;
+  z-index: 0;
 }
 
 .rbc-today {
@@ -166,6 +167,8 @@ h1 {
   background-color: whitesmoke;
   color: grey;
   margin: 3px !important;
+  display: flex;
+  align-items: center;
 }
 
 a {
@@ -213,6 +216,11 @@ a:hover {
 .rbc-event{
   color: rgb(187, 113, 218);
   background-color: rgb(187, 113, 218);
+  
+}
+.rbc-event-label {
+  width: 0rem !important;
+  height: 0rem !important;
 }
 
 .rbc-off-range-bg {
@@ -285,4 +293,8 @@ h1 {
   background-color: whitesmoke;
   border-radius: 10px;
   min-width: 90rem !important;
+}
+
+.react-datepicker__month-container {
+  z-index: 1000;
 }
