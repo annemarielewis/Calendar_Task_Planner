@@ -84,6 +84,10 @@ export default function Main() {
         "http://localhost:3001/newtask",
         formData
       );
+
+      response.data.taskData.start = new Date(response.data.taskData.start);
+      response.data.taskData.end = new Date(response.data.taskData.end);
+      console.log(response.data.taskData);
       setAllEvents([...allEvents, response.data.taskData]);
       console.log("data", response.data.taskData);
       // console.log(response.data);
@@ -121,7 +125,7 @@ export default function Main() {
                   setStartDate={setStartDate}
                   formData={formData}
                   setFormData={setFormData}
-                />   
+                />
               }
             />
             <Route path="/quotegenerator" element={<Quote />} />

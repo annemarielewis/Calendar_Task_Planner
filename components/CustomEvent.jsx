@@ -47,14 +47,13 @@ export default function CustomEvent({ event, setAllEvents }) {
   };
 
   
-  
   return (
     <div>
       <span>{event.title}</span>
       <Link to="/UpdateTask" state={{event, handleUpdate}}>
         <button
           id="update-task"
-          style={{ marginLeft: "10px", color: "black" }}
+          style={{ marginLeft: "0px"}}
         >
           change
         </button>
@@ -62,7 +61,7 @@ export default function CustomEvent({ event, setAllEvents }) {
       <button
         id="delete-task"
         onClick={handleDelete}
-        style={{ marginLeft: "10px", color: "black" }}
+        style={{ marginLeft: "0px"}}
       >
         ✓
       </button>
