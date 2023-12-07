@@ -20,7 +20,7 @@ export default function Choices() {
 
   return (
     <div className="choices">
-      <Link to="/quotegenerator" state={{quoteData}}>
+      <Link to="/quotegenerator" state={{ quoteData }}>
         <button className="getquote" onClick={fetchQuote}>
           Inspirational Quote
         </button>

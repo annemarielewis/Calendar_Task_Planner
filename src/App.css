@@ -201,6 +201,39 @@ a:hover {
   padding-left: 1.8rem;
 }
 
+.quote-container1 {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  padding: 1rem;
+  margin: 0.5rem;
+  width: 40rem;
+  padding-left: 1.8rem;
+  color: grey;
+  margin: 0;
+  padding: 0;
+
+}
+
+.quote-container2 {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  padding: 1rem;
+  margin: 0.5rem;
+  width: 40rem;
+  padding-left: 1.8rem;
+  color: grey;
+}
+
 /* event block */
 .rbc-event-content {
   color: rgb(245, 245, 246);
@@ -213,10 +246,9 @@ a:hover {
   background-color: rgb(187, 113, 218);
 }
 
-.rbc-event{
+.rbc-event {
   color: rgb(187, 113, 218);
   background-color: rgb(187, 113, 218);
-  
 }
 .rbc-event-label {
   width: 0rem !important;
