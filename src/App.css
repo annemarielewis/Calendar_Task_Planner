@@ -25,7 +25,13 @@ body {
 
 #delete-task {
   background-color: #8fc362;
-  padding: 1px;
+  padding: 2px;
+  font-size: 14px;
+}
+
+#update-task {
+  background-color: #ca2ca8;
+  padding: 2px;
   font-size: 12px;
 }
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function CustomEvent({ event, setAllEvents }) {
   // console.log("event", event);
@@ -24,13 +25,44 @@ export default function CustomEvent({ event, setAllEvents }) {
     }
   };
 
+  const handleUpdate = async () => {
+    try {
+      const updatedData = {
+        title: formData.title,
+        start: formData.start,
+        end: formData.end,
+      };
+      const response = await axios.put(
+        `http://localhost:3001/updatetask/${id}`,
+        updatedData
+      );
+      const updatedTask = response.data;
+
+      setAllEvents((currentEvents) =>
+        currentEvents.map((event) => (event._id === id ? updatedTask : event))
+      );
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  
+  
   return (
     <div>
       <span>{event.title}</span>
+      <Link to="/UpdateTask" state={{event, handleUpdate}}>
+        <button
+          id="update-task"
+          style={{ marginLeft: "10px", color: "black" }}
+        >
+          change
+        </button>
+      </Link>
       <button
         id="delete-task"
         onClick={handleDelete}
-        style={{ marginLeft: "5px", color: "black" }}
+        style={{ marginLeft: "10px", color: "black" }}
       >
         ✓
       </button>

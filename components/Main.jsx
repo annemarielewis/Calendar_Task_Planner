@@ -76,7 +76,6 @@ export default function Main() {
   async function handleAddEvent(event) {
     event.preventDefault();
     // state logic:
-
     setAddEvent(initialState);
     // console.log(formData);
     //db logic
@@ -88,7 +87,6 @@ export default function Main() {
       setAllEvents([...allEvents, response.data.taskData]);
       console.log("data", response.data.taskData);
       // console.log(response.data);
-      
     } catch (error) {
       console.error("Error:", error);
     }
@@ -123,7 +121,7 @@ export default function Main() {
                   setStartDate={setStartDate}
                   formData={formData}
                   setFormData={setFormData}
-                />
+                />   
               }
             />
             <Route path="/quotegenerator" element={<Quote />} />
@@ -138,9 +136,9 @@ export default function Main() {
             startAccessor="start"
             endAccessor="end"
             components={{
-              // event: CustomEvent,
               event: (props) => (
                 <CustomEvent {...props} setAllEvents={setAllEvents} />
+                // <UpdateTask {...props} setAllEvents={setAllEvents} />
               ),
             }}
             style={{ height: 1200, width: 1000, margin: "1rem" }}
