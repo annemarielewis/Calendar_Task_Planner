@@ -24,6 +24,7 @@ import { setHours, setMinutes } from "date-fns";
 import CustomEvent from "./CustomEvent";
 import UpdateTask from "./UpdateTask"
 import axios from "axios";
+import Partner from "./Partner"
 
 const locales = {
   "en-US": enUSLocale,
@@ -133,6 +134,7 @@ export default function Main() {
               }
             />
             <Route path="/quotegenerator" element={<Quote />} />
+            <Route path="/addpartner" element={<Partner />} />
             {/* <Route path="/addpartner" element={<Partner />} /> */}
           </Routes>
         </div>
