@@ -9,9 +9,9 @@ export default function Quote(props) {
   return (
     <>
     
-      <div className="quote-container2">
+      <div className="quote-container1">
         <h4>{quoteData.quote}</h4>
-        <div className="quote-container1">
+        <div className="quote-container2">
         <h7>- {quoteData.author} - </h7>
         <Link to="/">
         <button className="exit-btn">X</button>
