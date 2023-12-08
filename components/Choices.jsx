@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AddTask from "./AddTask";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Quote from "./Quote";
 
 export default function Choices() {
   const [quoteData, setQuoteData] = useState({});
@@ -21,6 +22,7 @@ export default function Choices() {
   return (
     <div className="choices">
       <Link to="/quotegenerator" state={{ quoteData }}>
+        {/* {quoteData && <Quote quoteData={quoteData} />} */}
         <button className="getquote" onClick={fetchQuote}>
           Inspirational Quote
         </button>
