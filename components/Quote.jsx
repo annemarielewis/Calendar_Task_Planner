@@ -7,9 +7,9 @@ export default function Quote(props) {
   // const { quoteData } = state;
   const { quoteData } = props;
 
-  // if (!quoteData) {
-  //   return <h1>loading</h1>;
-  // }
+  if (!quoteData.quote) {
+    return <h1>loading</h1>;
+  }
 
   return (
     <>

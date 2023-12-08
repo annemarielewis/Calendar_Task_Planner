@@ -22,9 +22,9 @@ import Quote from "./Quote";
 import Choices from "./Choices";
 import { setHours, setMinutes } from "date-fns";
 import CustomEvent from "./CustomEvent";
-import UpdateTask from "./UpdateTask"
+import UpdateTask from "./UpdateTask";
 import axios from "axios";
-import Partner from "./Partner"
+import Partner from "./Partner";
 
 const locales = {
   "en-US": enUSLocale,
@@ -75,7 +75,6 @@ export default function Main() {
     fetchData();
   }, []); // The empty dependency array means this effect runs once when the component mounts
 
-
   // CREATE:
   async function handleAddEvent(event) {
     event.preventDefault();
@@ -104,6 +103,21 @@ export default function Main() {
     setHours(setMinutes(new Date(), 30), 16)
   );
 
+  // QUOTE:
+  const [quoteData, setQuoteData] = useState({});
+
+  const fetchQuote = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.api-ninjas.com/v1/quotes?category=future",
+        { headers: { "X-Api-Key": `ZmQ6qJQtnxx1Z0ov8id09w==mD9wIVxy1qc2kmQB` } }
+      );
+      setQuoteData(response.data[0]);
+    } catch (error) {
+      console.error("Error fetching quote:", error);
+    }
+  };
+
   return (
     <>
       <div className="header">
@@ -115,10 +129,10 @@ export default function Main() {
         </div>
       </div>
       <div className="page">
-        <Choices />
+        <Choices fetchQuote={fetchQuote} />
         <div className="routesContainer">
           <Routes>
-          <Route path="/updatetask/:id" element = {<UpdateTask />}/>
+            <Route path="/updatetask/:id" element={<UpdateTask />} />
             <Route
               path="/addtask"
               element={
@@ -133,7 +147,10 @@ export default function Main() {
                 />
               }
             />
-            <Route path="/quotegenerator" element={<Quote />} />
+            <Route
+              path="/quotegenerator"
+              element={<Quote quoteData={quoteData} />}
+            />
             <Route path="/addpartner" element={<Partner />} />
             {/* <Route path="/addpartner" element={<Partner />} /> */}
           </Routes>

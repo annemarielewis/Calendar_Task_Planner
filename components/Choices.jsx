@@ -4,24 +4,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Quote from "./Quote";
 
-export default function Choices() {
-  const [quoteData, setQuoteData] = useState({});
-
-  const fetchQuote = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.api-ninjas.com/v1/quotes?category=future",
-        { headers: { "X-Api-Key": `ZmQ6qJQtnxx1Z0ov8id09w==mD9wIVxy1qc2kmQB` } }
-      );
-      setQuoteData(response.data[0]);
-    } catch (error) {
-      console.error("Error fetching quote:", error);
-    }
-  };
+export default function Choices(props) {
+  const { fetchQuote } = props;
 
   return (
     <div className="choices">
-      <Link to="/quotegenerator" state={{ quoteData }}>
+      <Link to="/quotegenerator">
         {/* {quoteData && <Quote quoteData={quoteData} />} */}
         <button className="getquote" onClick={fetchQuote}>
           Inspirational Quote
