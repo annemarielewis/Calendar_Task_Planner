@@ -26,6 +26,7 @@ import UpdateTask from "./UpdateTask";
 import axios from "axios";
 import Partner from "./Partner";
 
+
 const locales = {
   "en-US": enUSLocale,
 };
@@ -109,7 +110,7 @@ export default function Main() {
   const fetchQuote = async () => {
     try {
       const response = await axios.get(
-        "https://api.api-ninjas.com/v1/quotes?category=future",
+        "https://api.api-ninjas.com/v1/quotes?category=inspirational",
         { headers: { "X-Api-Key": `ZmQ6qJQtnxx1Z0ov8id09w==mD9wIVxy1qc2kmQB` } }
       );
       setQuoteData(response.data[0]);

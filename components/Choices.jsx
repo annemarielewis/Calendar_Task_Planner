@@ -5,12 +5,12 @@ import axios from "axios";
 import Quote from "./Quote";
 
 export default function Choices(props) {
-  const { fetchQuote } = props;
 
+  const { fetchQuote } = props;
+  
   return (
     <div className="choices">
       <Link to="/quotegenerator">
-        {/* {quoteData && <Quote quoteData={quoteData} />} */}
         <button className="getquote" onClick={fetchQuote}>
           Inspirational Quote
         </button>
